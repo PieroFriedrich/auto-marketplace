@@ -10,7 +10,7 @@ CREATE TABLE `cars` (
   `brand` varchar(20) NOT NULL,
   `color` varchar(15) NOT NULL,
   `km` int(11) NOT NULL,
-  `price` int(15) NOT NULL,
+  `price` int(11) NOT NULL,
   `picture` text NOT NULL,
   `year` int(11) NOT NULL,
   `seller_name` varchar(30) DEFAULT NULL,

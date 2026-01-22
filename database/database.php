@@ -82,7 +82,8 @@ function handle_form_submission() {
     $statement->bindValue(':brand', $_POST['brand']);
     $statement->bindValue(':color', $_POST['color']);
     $statement->bindValue(':km', $_POST['km']);
-    $statement->bindValue(':price', $_POST['price']);
+    $price = (float)$_POST['price'];
+    $statement->bindValue(':price', $price);
     if (isset($_POST['picture'])) {
       $statement->bindValue(':picture', $_POST['picture']);
     } else {

@@ -14,7 +14,7 @@ function the_cars() {
            data-seller-phone="<?php echo ($row['seller_phone']); ?>">
         <img src="<?php echo ($row['picture']); ?>">
         <p><?php echo ($row['year'] . " " . $row['brand'] . " " . $row['model']); ?></p>
-        <p>$<?php echo ($row['price']); ?>.00</p>
+        <p>$<?php echo number_format($row['price'], 2); ?></p>
         <button class="buynow">Buy Now</button>
         <div class="seller-info" id="seller-info-modal">
           <h3>Seller Information</h3>
