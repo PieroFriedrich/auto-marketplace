@@ -38,7 +38,7 @@ function get_filtered_cars($location, $model, $brand, $color, $km, $price) {
       $sql .= ' AND brand LIKE :brand';
       $params[':brand'] = '%' . $brand . '%';
   }
-  if ($color) {
+  if (!empty($color)) {
       $sql .= ' AND color = :color';
       $params[':color'] = $color;
   }
@@ -49,18 +49,6 @@ function get_filtered_cars($location, $model, $brand, $color, $km, $price) {
   if (!empty($price)) {
       $sql .= ' AND price <= :price';
       $params[':price'] = $price;
-  }
-  if (!empty($seller_name)) {
-      $sql .= ' AND seller_name <= :seller_name';
-      $params[':seller_name'] = $seller_name;
-  }
-  if (!empty($seller_email)) {
-      $sql .= ' AND seller_email <= :seller_email';
-      $params[':seller_email'] = $seller_email;
-  }
-  if (!empty($seller_phone)) {
-      $sql .= ' AND seller_phone <= :seller_phone';
-      $params[':seller_phone'] = $seller_phone;
   }
   $sql .= ' ORDER BY ID DESC';
   $statement = $pdo->prepare($sql);

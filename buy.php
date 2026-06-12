@@ -11,12 +11,12 @@ $pdo = db_connect();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $location = $_POST['location'];
-    $model = $_POST['model'];
-    $brand = $_POST['brand'];
-    $color = $_POST['color'];
-    $km = $_POST['km'];
-    $price = $_POST['price'];
+    $location = $_POST['location'] ?? "no-selection";
+    $model = $_POST['model'] ?? "";
+    $brand = $_POST['brand'] ?? "";
+    $color = $_POST['color'] ?? "";
+    $km = $_POST['km'] ?? "";
+    $price = $_POST['price'] ?? "";
 
     get_filtered_cars($location, $model, $brand, $color, $km, $price);
 } else {
