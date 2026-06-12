@@ -9,8 +9,6 @@ require_once 'templates/functions/template_functions.php';
 
 $pdo = db_connect();
 
-handle_form_submission($pdo);
-
 get_six_cars();
 
 include 'templates/index.php';
