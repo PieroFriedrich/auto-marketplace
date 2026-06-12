@@ -51,6 +51,10 @@ function validate()
 
     if($_SERVER['REQUEST_METHOD']== 'POST')
     {
+      $required_fields = ['location', 'model', 'brand', 'color', 'km', 'price', 'year', 'seller_name', 'seller_email', 'seller_phone'];
+      foreach ($required_fields as $field) {
+        $val_messages[$field] = 'This field is required';
+      }
 
       if (isset($_POST['location'])) {
         if ($_POST['location'] != "no-selection") {
@@ -92,10 +96,10 @@ function validate()
         }
       }
       if (isset($_POST['price'])) {
-        if ($_POST['price'] >= 0 && $_POST['price'] <= 10000000) {
+        if ($_POST['price'] > 0 && $_POST['price'] <= 10000000) {
           $val_messages['price'] = "";
-        } else if ($_POST['price'] < 0) {
-          $val_messages['price'] = 'price must be a positive number';
+        } else if ($_POST['price'] <= 0) {
+          $val_messages['price'] = 'price must be greater than 0';
         } else {
           $val_messages['price'] = 'Maximum price is $10,000,000.00';
         }
@@ -104,7 +108,7 @@ function validate()
         $allowed = array('jpg', 'jpeg', 'png', 'webp', 'avif');
         $fileExt = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
         if (!in_array(strtolower($fileExt), $allowed)) {
-            $val_messages['picture'] = 'Invalid file type. Only JPG, JPEG, PNG, and GIF are allowed.';
+            $val_messages['picture'] = 'Invalid file type. Only JPG, JPEG, PNG, WEBP, and AVIF are allowed.';
         } else if ($_FILES['picture']['size'] > 6 * 1024 * 1024) {
             $val_messages['picture'] = 'File size exceeds the maximum limit of 6MB.';
         } else {
@@ -153,7 +157,8 @@ function validate()
         }
     }
 
-      if ($val_messages['location'] == "" && $val_messages['model'] == "" && $val_messages['brand'] == "" && $val_messages['color'] == "" && $val_messages['km'] == "" && $val_messages['price'] == "" && $val_messages['year'] == "" && $val_messages['seller_name'] == "" && $val_messages['seller_email'] == "" && $val_messages['seller_phone'] == "") {
+      $required_messages = array_intersect_key($val_messages, array_flip($required_fields));
+      if (array_filter($required_messages) === []) {
         $valid = true;
       }
     }
