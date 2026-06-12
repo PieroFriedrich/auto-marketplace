@@ -12,7 +12,7 @@ $valid = validate();
 
 $pdo = db_connect();
 
-if ($valid) handle_form_submission($pdo);
+if ($valid) handle_form_submission();
 
 
 get_cars();
