@@ -14,7 +14,7 @@
   <body>
     <nav>
       <img src="./images/auto_marketplace_logo.png" alt="logo" />
-      <div class="nav-title">AUTO MARKETPLACE - BUY</div>
+      <a href="./index.php" class="nav-title">AUTO MARKETPLACE - BUY</a>
       <button>
         <div class="dropdown">
           <span class="dropbtn material-symbols-outlined"> menu </span>
